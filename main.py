@@ -185,7 +185,19 @@ def recomendacion_endpoint(nombre_pelicula: str):
 
 @app.get('/character/{id}')
 def character(id:str):
-    respuesta={
+    
+    for personaje in datos:
+        if personaje['id']==id:
+            respuesta=personaje
+        else:
+            respuesta=datos[1]
+    
+    json_data = json.dumps(respuesta, indent=4, ensure_ascii=False)
+    response = Response(content=json_data, media_type="application/json")  
+    return response
+
+datos=[
+   {
         'id': 1, 
         'name':'Rick Sanchez',
         'status': 'Alive', 
@@ -203,7 +215,29 @@ def character(id:str):
         'image':"https://rickandmortyapi.com/api/character/avatar/1.jpeg",
         'url': "https://rickandmortyapi.com/api/character/1",
         'created':"2017-11-04T18:48:46.250Z"
-        }
-    json_data = json.dumps(respuesta, indent=4, ensure_ascii=False)
-    response = Response(content=json_data, media_type="application/json")  
-    return response
+        },
+   {
+      'id': 2,
+      'name': 'Morty Smith',
+      'status': 'Alive',
+      'species': 'Human',
+      'gender': 'Male',
+      'origin': {
+         'name': 'unknown',
+         'url': '',
+      },
+      'image': 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
+   },
+   {
+      'id': 3,
+      'name': 'Summer Smith',
+      'status': 'Alive',
+      'species': 'Human',
+      'gender': 'Female',
+      'origin': {
+         'name': 'Earth (Replacement Dimension)',
+         'url': 'https://rickandmortyapi.com/api/location/20',
+      },
+      'image': 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
+   },
+];
