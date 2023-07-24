@@ -169,3 +169,11 @@ def recomendacion_endpoint(nombre_pelicula: str):
 # # Ejemplo de uso
 # resultado2 = recomendacion_endpoint("Toy Story")
 # print(resultado2)
+
+
+@app.get('/character/{id}')
+def character(id:str):
+    respuesta={
+        'id': 1, 
+        'name':'Rick Sanchez'}
+    return respuesta
