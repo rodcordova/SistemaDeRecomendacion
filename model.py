@@ -20,7 +20,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise        import linear_kernel
 
 # Ingestamos el dataframe de tres variables
-data = pd.read_csv("data/ds_model.csv")
+data = pd.read_csv("ds_model.csv")
 
 # Se crea el modelo de Similitud del coseno para un Sistema de recomendación de películas
 # Utilizamos solo 5 primeras apariciones

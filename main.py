@@ -18,7 +18,7 @@ from model import recomendacion
 app = FastAPI()
 
 # Se ingestan los datos y se crea un dataframe
-df = pd.read_csv("data/ds_clean.csv")
+df = pd.read_csv("ds_clean.csv")
 
 @app.get('/peliculas_idioma/{Idioma}')    
 # Se ejecuta cuando se hace una solicitud GET a la raiz de la API
