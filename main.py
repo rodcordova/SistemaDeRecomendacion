@@ -13,9 +13,21 @@ import numpy as np
 
 from model import recomendacion
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+# Configurar CORS para permitir solicitudes desde http://localhost:3000 (tu aplicación de React)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+
 # Se instancia el APi (Framework de python)
 # El API define las rutas, los metodos HTTP, y las fucniones asociadas para el manejo de solicitudes
-app = FastAPI()
+
 
 # Se ingestan los datos y se crea un dataframe
 df = pd.read_csv("ds_clean.csv")
