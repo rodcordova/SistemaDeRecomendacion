@@ -187,7 +187,7 @@ def recomendacion_endpoint(nombre_pelicula: str):
 def character(id:str):
     
     for personaje in datos:
-        if personaje['id']==id:
+        if personaje['id']==int(id):
             respuesta=personaje
         else:
             respuesta=datos[1]
