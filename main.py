@@ -186,11 +186,15 @@ def recomendacion_endpoint(nombre_pelicula: str):
 @app.get('/character/{id}')
 def character(id:str):
     
+    encontrado = False
     for personaje in datos:
-        if personaje['id']==int(id):
-            respuesta=personaje
-        else:
-            respuesta=datos[1]
+        if personaje['id'] == int(id):
+            respuesta = personaje
+            encontrado = True
+            break
+    
+    if not encontrado:
+        return Response(status_code=404)
     
     json_data = json.dumps(respuesta, indent=4, ensure_ascii=False)
     response = Response(content=json_data, media_type="application/json")  
@@ -239,5 +243,5 @@ datos=[
          'url': 'https://rickandmortyapi.com/api/location/20',
       },
       'image': 'https://rickandmortyapi.com/api/character/avatar/3.jpeg',
-   },
-];
+   }
+]
