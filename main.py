@@ -192,4 +192,6 @@ def character(id:str):
         'url': "https://rickandmortyapi.com/api/character/1",
         'created':"2017-11-04T18:48:46.250Z"
         }
-    return respuesta
+    json_data = json.dumps(respuesta, indent=4, ensure_ascii=False)
+    response = Response(content=json_data, media_type="application/json")  
+    return response
